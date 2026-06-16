@@ -1,0 +1,1426 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>上班族健康管理 × 職場效能提升｜沈宛徵營養師</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/white.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy:  #0B2E59;
+      --teal:  #168C96;
+      --green: #3BAA5C;
+      --orange:#F28C28;
+      --yellow:#F8D75A;
+      --bg:    #F7FAFC;
+      --text:  #263238;
+      --card-shadow: 0 8px 24px rgba(11,46,89,0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: "Noto Sans TC","Microsoft JhengHei",sans-serif;
+      background: var(--bg);
+    }
+    .reveal { color: var(--text); }
+    .reveal .slides section {
+      height: 100%;
+      padding: 40px 60px;
+      text-align: left;
+    }
+    .reveal h1 { color: var(--navy); font-weight: 900; font-size: 1.9em; line-height:1.25; margin-bottom:.3em; }
+    .reveal h2 { color: var(--navy); font-weight: 800; font-size: 1.4em; margin-bottom:.5em; }
+    .reveal h3 { color: var(--teal); font-weight: 700; font-size: 1.1em; }
+    .reveal p, .reveal li { font-size: .82em; }
+    .accent  { color: var(--orange); }
+    .teal    { color: var(--teal); }
+    .green   { color: var(--green); }
+    .subtitle { font-size:.72em; color:#546E7A; margin-top:.2em; }
+    .disclaimer { font-size:.58em; color:#90A4AE; margin-top:1em; border-top:1px solid #CFD8DC; padding-top:.5em; }
+
+    /* ── layout helpers ── */
+    .two-col { display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:start; }
+    .three-col { display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px; }
+    .center-all { display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; text-align:center; }
+
+    /* ── card ── */
+    .card {
+      background:#fff; border-radius:18px; padding:20px 22px;
+      box-shadow:var(--card-shadow); cursor:pointer;
+      transition:transform .2s, background .2s, color .2s;
+      user-select:none;
+    }
+    .card:hover { transform:translateY(-4px); }
+    .card.selected { background:var(--teal); color:#fff; }
+    .card.wrong   { background:#FFCDD2; }
+    .card.correct { background:#C8E6C9; }
+    .card-icon { font-size:1.8em; margin-bottom:.3em; }
+    .card-title { font-weight:700; font-size:.92em; }
+    .card-body  { font-size:.75em; margin-top:.3em; color:#546E7A; }
+    .card.selected .card-body { color:rgba(255,255,255,.85); }
+
+    /* ── button ── */
+    .btn {
+      border:0; border-radius:999px; padding:12px 28px;
+      font-size:.85em; font-weight:700; cursor:pointer;
+      font-family:inherit; transition:.2s;
+    }
+    .btn-primary { background:var(--orange); color:#fff; }
+    .btn-primary:hover { background:#D97A1A; }
+    .btn-teal { background:var(--teal); color:#fff; }
+    .btn-teal:hover { background:#0F6B73; }
+    .btn-outline { background:transparent; color:var(--navy); border:2px solid var(--navy); }
+    .btn-outline:hover { background:var(--navy); color:#fff; }
+
+    /* ── result box ── */
+    .result-box {
+      margin-top:18px; padding:16px 20px; border-radius:14px;
+      background:#E8F5E9; font-size:.82em; min-height:44px;
+      border-left:4px solid var(--green); line-height:1.6;
+      transition:all .3s;
+    }
+    .result-box.warn { background:#FFF3E0; border-color:var(--orange); }
+    .result-box.danger { background:#FCE4EC; border-color:#E53935; }
+
+    /* ── progress tag ── */
+    .tag {
+      display:inline-block; padding:4px 14px; border-radius:99px;
+      font-size:.65em; font-weight:700; margin:.2em;
+    }
+    .tag-blue { background:#E3F2FD; color:#1565C0; }
+    .tag-green { background:#E8F5E9; color:#2E7D32; }
+    .tag-orange { background:#FFF3E0; color:#E65100; }
+    .tag-red { background:#FCE4EC; color:#B71C1C; }
+
+    /* ── timeline ── */
+    .timeline { display:flex; flex-direction:column; gap:12px; }
+    .timeline-item {
+      display:flex; align-items:center; gap:16px;
+      background:#fff; border-radius:12px; padding:12px 18px;
+      box-shadow:0 2px 8px rgba(0,0,0,.06);
+    }
+    .timeline-time {
+      font-weight:700; color:var(--teal); font-size:.85em;
+      min-width:60px;
+    }
+    .timeline-icon { font-size:1.4em; }
+    .timeline-text { font-size:.8em; }
+
+    /* ── flip card ── */
+    .flip-card { perspective:800px; cursor:pointer; }
+    .flip-card-inner {
+      position:relative; width:100%; padding-top:130%;
+      transform-style:preserve-3d; transition:transform .5s;
+    }
+    .flip-card.flipped .flip-card-inner { transform:rotateY(180deg); }
+    .flip-front,.flip-back {
+      position:absolute; top:0; left:0; width:100%; height:100%;
+      backface-visibility:hidden; border-radius:18px;
+      display:flex; flex-direction:column;
+      align-items:center; justify-content:center;
+      padding:16px; text-align:center;
+    }
+    .flip-front { background:var(--teal); color:#fff; }
+    .flip-back  { background:var(--navy); color:#fff; transform:rotateY(180deg); }
+    .flip-front .flip-icon { font-size:2.2em; margin-bottom:.4em; }
+    .flip-front .flip-title { font-weight:700; font-size:.9em; }
+    .flip-back .flip-tip { font-size:.75em; line-height:1.7; }
+
+    /* ── quiz option ── */
+    .quiz-options { display:flex; flex-direction:column; gap:12px; margin-top:16px; }
+    .quiz-option {
+      background:#fff; border-radius:12px; padding:14px 20px;
+      box-shadow:0 2px 8px rgba(0,0,0,.08); cursor:pointer;
+      font-size:.82em; font-weight:500; transition:.2s;
+      border:2px solid transparent;
+    }
+    .quiz-option:hover { border-color:var(--teal); }
+    .quiz-option.correct { background:#C8E6C9; border-color:var(--green); }
+    .quiz-option.wrong   { background:#FFCDD2; border-color:#E53935; }
+
+    /* ── chart wrapper ── */
+    .chart-wrap { background:#fff; border-radius:18px; padding:20px; box-shadow:var(--card-shadow); }
+
+    /* ── shield grid (P6) ── */
+    .shield-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .shield-card {
+      background:#fff; border-radius:18px; padding:22px;
+      box-shadow:var(--card-shadow); cursor:pointer; transition:.2s;
+      border-top:5px solid var(--teal);
+    }
+    .shield-card:nth-child(2) { border-top-color:var(--green); }
+    .shield-card:nth-child(3) { border-top-color:var(--orange); }
+    .shield-card:nth-child(4) { border-top-color:var(--yellow); }
+    .shield-card:hover { transform:translateY(-4px); }
+    .shield-card .icon { font-size:2em; }
+    .shield-card h3 { margin:.3em 0 .2em; }
+    .shield-detail { font-size:.72em; color:#546E7A; margin-top:.4em; display:none; }
+    .shield-card.open .shield-detail { display:block; }
+
+    /* ── profile page ── */
+    .profile-layout {
+      display:grid; grid-template-columns:0.8fr 1.3fr 0.75fr;
+      gap:28px; align-items:center;
+    }
+    .profile-photo {
+      width:100%; max-height:560px; object-fit:cover;
+      border-radius:20px; box-shadow:var(--card-shadow);
+    }
+    .profile-photo-placeholder {
+      width:100%; aspect-ratio:3/4; border-radius:20px;
+      background:linear-gradient(135deg,var(--teal),var(--navy));
+      display:flex; align-items:center; justify-content:center;
+      color:rgba(255,255,255,.4); font-size:4em;
+    }
+    .qr-box {
+      background:#fff; border-radius:16px; padding:16px;
+      box-shadow:var(--card-shadow); text-align:center;
+    }
+    .qr-placeholder {
+      width:180px; height:180px; background:#f0f0f0;
+      border-radius:8px; margin:0 auto 10px;
+      display:flex; align-items:center; justify-content:center;
+      color:#90A4AE; font-size:3em;
+    }
+
+    /* ── cover ── */
+    .cover-layout { display:grid; grid-template-columns:1.1fr 0.9fr; gap:40px; align-items:center; height:100%; }
+    .cover-keywords { display:flex; gap:10px; flex-wrap:wrap; margin-top:20px; }
+    .kw-tag {
+      padding:8px 16px; border-radius:99px; font-size:.72em; font-weight:700;
+      opacity:0; animation:fadeUp .5s forwards;
+    }
+    .kw-tag:nth-child(1) { animation-delay:.4s; background:#E3F2FD; color:var(--navy); }
+    .kw-tag:nth-child(2) { animation-delay:.7s; background:#E8F5E9; color:var(--green); }
+    .kw-tag:nth-child(3) { animation-delay:1s;  background:#FFF3E0; color:var(--orange); }
+    .kw-tag:nth-child(4) { animation-delay:1.3s;background:#F3E5F5; color:#7B1FA2; }
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(12px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+    .cover-img-placeholder {
+      width:100%; aspect-ratio:1; border-radius:24px;
+      background:linear-gradient(135deg,var(--teal) 0%,var(--navy) 100%);
+      display:flex; align-items:center; justify-content:center;
+      color:rgba(255,255,255,.35); font-size:6em;
+    }
+
+    /* ── checklist ── */
+    .checklist { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px; }
+    .checklist li {
+      display:flex; align-items:center; gap:12px;
+      background:#fff; padding:14px 18px; border-radius:12px;
+      box-shadow:0 2px 8px rgba(0,0,0,.06); cursor:pointer;
+      font-size:.82em; transition:.2s;
+    }
+    .checklist li .cb {
+      width:22px; height:22px; border-radius:6px; border:2px solid #B0BEC5;
+      flex-shrink:0; display:flex; align-items:center; justify-content:center;
+      transition:.2s;
+    }
+    .checklist li.checked .cb { background:var(--green); border-color:var(--green); color:#fff; }
+
+    /* ── snack drawer ── */
+    .snack-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+    .snack-card {
+      background:#fff; border-radius:16px; padding:16px;
+      box-shadow:var(--card-shadow); cursor:pointer; transition:.2s; text-align:center;
+    }
+    .snack-card:hover { transform:translateY(-3px); }
+    .snack-card .snack-icon { font-size:2.2em; margin-bottom:.3em; }
+    .snack-card .snack-name { font-weight:700; font-size:.8em; }
+    .snack-detail {
+      display:none; font-size:.72em; color:#546E7A; margin-top:.5em;
+      text-align:left; line-height:1.6;
+    }
+    .snack-card.open .snack-detail { display:block; }
+
+    /* ── week task ── */
+    .week-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+    .week-card {
+      background:#fff; border-radius:16px; padding:18px 14px;
+      box-shadow:var(--card-shadow); cursor:pointer; transition:.2s; text-align:center;
+      border:3px solid transparent;
+    }
+    .week-card:hover { transform:translateY(-3px); }
+    .week-card.chosen { border-color:var(--orange); background:#FFF3E0; }
+    .week-num { font-size:.65em; color:#90A4AE; }
+    .week-icon { font-size:1.8em; margin:.3em 0; }
+    .week-label { font-size:.78em; font-weight:700; }
+
+    /* ── HR simulator ── */
+    .hr-options { display:flex; flex-direction:column; gap:10px; margin-bottom:20px; }
+    .hr-option {
+      display:flex; align-items:center; gap:14px;
+      background:#fff; padding:12px 18px; border-radius:12px;
+      box-shadow:0 2px 8px rgba(0,0,0,.06); cursor:pointer; font-size:.8em;
+      border:2px solid transparent; transition:.2s;
+    }
+    .hr-option input[type=checkbox] { accent-color:var(--teal); width:18px; height:18px; }
+    .hr-option.active { border-color:var(--teal); background:#E0F7FA; }
+    .meter-row { display:flex; flex-direction:column; gap:10px; }
+    .meter-item { display:flex; align-items:center; gap:12px; font-size:.78em; }
+    .meter-label { min-width:100px; font-weight:600; }
+    .meter-bar-bg { flex:1; background:#ECEFF1; border-radius:99px; height:12px; overflow:hidden; }
+    .meter-bar { height:100%; border-radius:99px; transition:width .5s; }
+
+    /* ── p4 circle buttons ── */
+    .factor-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+    .factor-btn {
+      background:#fff; border-radius:50%; aspect-ratio:1;
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      box-shadow:var(--card-shadow); cursor:pointer; transition:.2s;
+      border:3px solid transparent; font-size:.82em; font-weight:700; gap:6px;
+    }
+    .factor-btn:hover { transform:scale(1.05); }
+    .factor-btn.active { border-color:var(--orange); background:#FFF3E0; }
+    .factor-btn i { font-size:1.6em; color:var(--teal); }
+
+    /* ── p5 cost cards ── */
+    .cost-layout { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    .cost-col { display:flex; flex-direction:column; gap:10px; }
+    .cost-col-title { font-weight:700; font-size:.85em; margin-bottom:.3em; }
+    .cost-item {
+      background:#fff; border-radius:12px; padding:12px 16px;
+      box-shadow:0 2px 8px rgba(0,0,0,.06); font-size:.78em;
+      display:flex; align-items:center; gap:10px; cursor:pointer;
+    }
+    .cost-item .ci { font-size:1.4em; }
+    .cost-item.active { outline:2px solid var(--teal); }
+    .cost-arrow {
+      display:flex; align-items:center; justify-content:center;
+      font-size:1.8em; color:#B0BEC5;
+    }
+
+    /* ── step banner ── */
+    .steps { display:flex; gap:10px; margin-top:20px; }
+    .step-item {
+      flex:1; background:#fff; border-radius:14px; padding:16px 12px;
+      box-shadow:var(--card-shadow); text-align:center;
+      opacity:.3; transition:.4s; font-size:.78em;
+    }
+    .step-item.show { opacity:1; }
+    .step-num { font-size:1.4em; font-weight:900; color:var(--orange); }
+    .step-label { font-weight:700; font-size:.9em; margin:.2em 0; }
+    .step-sub { color:#546E7A; font-size:.85em; }
+
+    /* ── reveal overrides ── */
+    .reveal .slides { overflow:hidden; }
+    .reveal .progress span { background:var(--orange); }
+    .reveal .controls button { color:var(--navy); }
+    .reveal .slide-number { background:rgba(11,46,89,.7); color:#fff; border-radius:8px; }
+  </style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<!-- ━━━━ P1 封面 ━━━━ -->
+<section data-background="var(--bg)">
+  <div class="cover-layout" style="height:100vh; padding:40px 60px;">
+    <div>
+      <div style="font-size:.7em; color:var(--teal); font-weight:700; letter-spacing:.1em; margin-bottom:.5em;">
+        生生優活南京健康管理診所
+      </div>
+      <h1>上班族健康管理<br><span class="accent">× 職場效能提升</span></h1>
+      <p class="subtitle">從代謝、外食、壓力到專注力的<br>營養師實戰策略</p>
+      <div class="cover-keywords">
+        <span class="kw-tag">🔥 代謝</span>
+        <span class="kw-tag">🥗 外食</span>
+        <span class="kw-tag">😤 壓力</span>
+        <span class="kw-tag">🧠 專注力</span>
+      </div>
+      <div style="margin-top:32px; display:flex; gap:12px; flex-wrap:wrap;">
+        <button class="btn btn-primary" onclick="Reveal.next()">
+          <i class="fa fa-arrow-right"></i> 開始職場健康檢查
+        </button>
+        <button class="btn btn-outline" onclick="Reveal.slide(19)">
+          <i class="fa fa-user"></i> 關於營養師
+        </button>
+      </div>
+    </div>
+    <div class="cover-img-placeholder">
+      <i class="fa fa-stethoscope"></i>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━ P2 職場犯罪現場 ━━━━ -->
+<section>
+  <h2><i class="fa fa-magnifying-glass accent"></i> 職場犯罪現場</h2>
+  <p class="subtitle">你最近一週中了幾項？點選符合的項目</p>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:16px;" id="symptomGrid">
+    <div class="card" onclick="toggleSymptom(this)">
+      <div class="card-icon">😴</div>
+      <div class="card-title">下午容易想睡</div>
+      <div class="card-body">下午兩三點撐不住，思緒渙散</div>
+    </div>
+    <div class="card" onclick="toggleSymptom(this)">
+      <div class="card-icon">🧋</div>
+      <div class="card-title">靠咖啡或甜食撐</div>
+      <div class="card-body">沒有手搖或咖啡就沒有精神</div>
+    </div>
+    <div class="card" onclick="toggleSymptom(this)">
+      <div class="card-icon">🍜</div>
+      <div class="card-title">晚上壓力性進食</div>
+      <div class="card-body">壓力大就想吃，停不下來</div>
+    </div>
+    <div class="card" onclick="toggleSymptom(this)">
+      <div class="card-icon">🛌</div>
+      <div class="card-title">睡不飽又不想動</div>
+      <div class="card-body">睡了還是累，完全無法運動</div>
+    </div>
+  </div>
+  <div class="result-box" id="symptomResult">點選符合你的項目，查看結果 👇</div>
+  <p class="disclaimer">此工具僅供一般健康教育，不取代個別醫療診斷或營養評估。</p>
+</section>
+
+<!-- ━━━━ P3 代謝症候群五項檢查 ━━━━ -->
+<section>
+  <div class="two-col">
+    <div>
+      <h2><i class="fa fa-heart-pulse teal"></i> 代謝症候群<br>五項自我檢查</h2>
+      <p class="subtitle">勾選符合你的狀況（僅供衛教參考）</p>
+      <ul class="checklist" id="metaChecklist" style="margin-top:14px;">
+        <li onclick="toggleMeta(this)">
+          <span class="cb"><i class="fa fa-check" style="font-size:.7em;display:none;"></i></span>
+          腰圍偏高（男≥90cm，女≥80cm）
+        </li>
+        <li onclick="toggleMeta(this)">
+          <span class="cb"><i class="fa fa-check" style="font-size:.7em;display:none;"></i></span>
+          血壓偏高（≥130/85 mmHg）
+        </li>
+        <li onclick="toggleMeta(this)">
+          <span class="cb"><i class="fa fa-check" style="font-size:.7em;display:none;"></i></span>
+          空腹血糖偏高（≥100 mg/dL）
+        </li>
+        <li onclick="toggleMeta(this)">
+          <span class="cb"><i class="fa fa-check" style="font-size:.7em;display:none;"></i></span>
+          三酸甘油酯偏高（≥150 mg/dL）
+        </li>
+        <li onclick="toggleMeta(this)">
+          <span class="cb"><i class="fa fa-check" style="font-size:.7em;display:none;"></i></span>
+          HDL 膽固醇偏低（男&lt;40，女&lt;50 mg/dL）
+        </li>
+      </ul>
+    </div>
+    <div>
+      <div class="result-box" id="metaResult" style="margin-top:8px;">請勾選項目</div>
+      <div style="margin-top:20px; background:#fff; border-radius:16px; padding:20px; box-shadow:var(--card-shadow);">
+        <h3 style="margin-bottom:12px;">判定標準</h3>
+        <div style="display:flex; flex-direction:column; gap:8px; font-size:.75em;">
+          <div><span class="tag tag-green">0–1 項</span> 目前未達代謝症候群判定</div>
+          <div><span class="tag tag-orange">2 項</span> 接近警戒線，建議調整生活習慣</div>
+          <div><span class="tag tag-red">≥3 項</span> 建議接受進一步醫療與營養評估</div>
+        </div>
+      </div>
+      <p class="disclaimer">此工具僅供衛教，不取代正式診斷。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━ P4 四面埋伏 ━━━━ -->
+<section>
+  <h2><i class="fa fa-triangle-exclamation accent"></i> 四面埋伏</h2>
+  <p class="subtitle">點選想了解的因素，看它如何影響你的健康</p>
+  <div class="factor-grid" style="margin-top:20px;" id="factorGrid">
+    <div class="factor-btn" onclick="showFactor('sit')">
+      <i class="fa fa-chair"></i>久坐
+    </div>
+    <div class="factor-btn" onclick="showFactor('eat')">
+      <i class="fa fa-utensils"></i>外食
+    </div>
+    <div class="factor-btn" onclick="showFactor('stress')">
+      <i class="fa fa-brain"></i>壓力
+    </div>
+    <div class="factor-btn" onclick="showFactor('sleep')">
+      <i class="fa fa-moon"></i>睡眠不足
+    </div>
+  </div>
+  <div id="factorDetail" style="display:none; margin-top:20px;">
+    <div class="result-box" id="factorContent"></div>
+  </div>
+  <div id="factorGrid2" style="display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:16px;">
+    <div class="card" style="background:#EDE7F6; cursor:default;">
+      <div style="font-size:.7em; color:#7B1FA2; font-weight:700;">食慾</div>
+      <div id="f-appetite" style="font-size:.75em; margin-top:.3em; color:#546E7A;">—</div>
+    </div>
+    <div class="card" style="background:#FCE4EC; cursor:default;">
+      <div style="font-size:.7em; color:#C62828; font-weight:700;">血糖</div>
+      <div id="f-sugar" style="font-size:.75em; margin-top:.3em; color:#546E7A;">—</div>
+    </div>
+    <div class="card" style="background:#FFF3E0; cursor:default;">
+      <div style="font-size:.7em; color:#E65100; font-weight:700;">腰圍</div>
+      <div id="f-waist" style="font-size:.75em; margin-top:.3em; color:#546E7A;">—</div>
+    </div>
+    <div class="card" style="background:#E8F5E9; cursor:default;">
+      <div style="font-size:.7em; color:#2E7D32; font-weight:700;">工作精神</div>
+      <div id="f-work" style="font-size:.75em; margin-top:.3em; color:#546E7A;">—</div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━ P5 隱形成本 ━━━━ -->
+<section>
+  <h2><i class="fa fa-scale-balanced teal"></i> 隱形成本</h2>
+  <p class="subtitle">健康習慣 vs 健康代價</p>
+  <div class="cost-layout" style="margin-top:16px;">
+    <div class="cost-col">
+      <div class="cost-col-title green"><i class="fa fa-leaf"></i> 健康投資</div>
+      <div class="cost-item" onclick="showCost(this,'invest','補水','維持專注、減少頭痛與疲勞感')">
+        <span class="ci">💧</span> 每日充足補水
+      </div>
+      <div class="cost-item" onclick="showCost(this,'invest','健康餐選擇','穩定血糖、減少午後嗜睡')">
+        <span class="ci">🥗</span> 健康餐選擇
+      </div>
+      <div class="cost-item" onclick="showCost(this,'invest','飯後走路','促進消化與血糖調節')">
+        <span class="ci">🚶</span> 飯後散步 10 分鐘
+      </div>
+      <div class="cost-item" onclick="showCost(this,'invest','充足睡眠','降低壓力荷爾蒙、控制食慾')">
+        <span class="ci">😴</span> 充足睡眠
+      </div>
+    </div>
+    <div class="cost-arrow"><i class="fa fa-arrow-right-arrow-left"></i></div>
+    <div class="cost-col">
+      <div class="cost-col-title accent"><i class="fa fa-triangle-exclamation"></i> 未投資的代價</div>
+      <div class="cost-item" onclick="showCost(this,'cost','慢性疲勞','工作效率持續下滑')">
+        <span class="ci">😵</span> 慢性疲勞
+      </div>
+      <div class="cost-item" onclick="showCost(this,'cost','請假頻率增加','因健康問題缺勤')">
+        <span class="ci">📋</span> 請假頻率增加
+      </div>
+      <div class="cost-item" onclick="showCost(this,'cost','醫療支出','慢性病長期花費')">
+        <span class="ci">💊</span> 醫療支出增加
+      </div>
+      <div class="cost-item" onclick="showCost(this,'cost','在職低效能','人在心不在的生產力損耗')">
+        <span class="ci">📉</span> 在職低效能
+      </div>
+    </div>
+  </div>
+  <div class="result-box" id="costResult" style="margin-top:14px;">點選左右任一項目查看說明</div>
+</section>
+
+<!-- ━━━━ P6 四大系統解方 ━━━━ -->
+<section>
+  <h2><i class="fa fa-shield-halved green"></i> 四大系統解方</h2>
+  <p class="subtitle">點擊各盾牌，查看最低成本版本的行動方案</p>
+  <div class="shield-grid" style="margin-top:20px;">
+    <div class="shield-card" onclick="toggleShield(this)">
+      <div class="icon">🍽️</div>
+      <h3>吃對</h3>
+      <p style="font-size:.75em; color:#546E7A; margin:.2em 0;">飲食選擇策略</p>
+      <div class="shield-detail">
+        <strong>最低成本版：</strong><br>
+        飲料先改無糖<br>
+        點餐時加一份青菜<br>
+        把精製澱粉換成地瓜或糙米
+      </div>
+    </div>
+    <div class="shield-card" onclick="toggleShield(this)">
+      <div class="icon">🏃</div>
+      <h3>動一點</h3>
+      <p style="font-size:.75em; color:#546E7A; margin:.2em 0;">日常活動累積</p>
+      <div class="shield-detail">
+        <strong>最低成本版：</strong><br>
+        飯後走路 10 分鐘<br>
+        會議改走路會議<br>
+        久坐每小時起身一次
+      </div>
+    </div>
+    <div class="shield-card" onclick="toggleShield(this)">
+      <div class="icon">🌙</div>
+      <h3>睡夠</h3>
+      <p style="font-size:.75em; color:#546E7A; margin:.2em 0;">睡眠品質管理</p>
+      <div class="shield-detail">
+        <strong>最低成本版：</strong><br>
+        下午三點後減少咖啡因<br>
+        睡前 30 分鐘減少螢幕<br>
+        固定起床時間
+      </div>
+    </div>
+    <div class="shield-card" onclick="toggleShield(this)">
+      <div class="icon">🧘</div>
+      <h3>降壓</h3>
+      <p style="font-size:.75em; color:#546E7A; margin:.2em 0;">壓力辨識與調節</p>
+      <div class="shield-detail">
+        <strong>最低成本版：</strong><br>
+        先辨認是真餓還是心情差<br>
+        感到壓力時先喝一杯水<br>
+        設定工作不看手機的 30 分鐘
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━ P7 外食地雷 vs 升級 ━━━━ -->
+<section>
+  <h2><i class="fa fa-utensils accent"></i> 你會怎麼選？</h2>
+  <p class="subtitle">午餐選哪組？點擊查看解析</p>
+  <div class="two-col" style="margin-top:16px; gap:20px;">
+    <div class="card" id="mealA" onclick="chooseMeal('A')" style="border:3px solid transparent;">
+      <div style="font-size:3em; text-align:center; margin-bottom:10px;">🍱</div>
+      <div style="font-weight:700; text-align:center; margin-bottom:10px; color:var(--navy);">選項 A</div>
+      <div style="font-size:.78em; line-height:1.8;">
+        炸排骨便當<br>
+        附滷汁白飯<br>
+        含糖珍珠奶茶（全糖）
+      </div>
+    </div>
+    <div class="card" id="mealB" onclick="chooseMeal('B')" style="border:3px solid transparent;">
+      <div style="font-size:3em; text-align:center; margin-bottom:10px;">🥗</div>
+      <div style="font-weight:700; text-align:center; margin-bottom:10px; color:var(--navy);">選項 B</div>
+      <div style="font-size:.78em; line-height:1.8;">
+        烤雞腿便當<br>
+        兩份青菜＋半飯<br>
+        無糖茶
+      </div>
+    </div>
+  </div>
+  <div class="result-box" id="mealResult" style="margin-top:16px;">請選擇其中一組 👆</div>
+</section>
+
+<!-- ━━━━ P8 10 秒點餐公式 ━━━━ -->
+<section>
+  <h2><i class="fa fa-stopwatch teal"></i> 10 秒點餐公式</h2>
+  <p class="subtitle">點擊依序展開每個步驟</p>
+  <div class="steps" id="orderSteps" style="margin-top:20px;">
+    <div class="step-item" onclick="showStep(0)">
+      <div class="step-num">1</div>
+      <div class="step-label">蛋白質</div>
+      <div class="step-sub">雞、魚、豆、蛋</div>
+    </div>
+    <div class="step-item" onclick="showStep(1)">
+      <div class="step-num">2</div>
+      <div class="step-label">蔬菜</div>
+      <div class="step-sub">至少一份<br>深色優先</div>
+    </div>
+    <div class="step-item" onclick="showStep(2)">
+      <div class="step-num">3</div>
+      <div class="step-label">主食</div>
+      <div class="step-sub">半碗～一碗<br>全穀更好</div>
+    </div>
+    <div class="step-item" onclick="showStep(3)">
+      <div class="step-num">4</div>
+      <div class="step-label">飲料醬料</div>
+      <div class="step-sub">無糖飲<br>醬料減半</div>
+    </div>
+  </div>
+  <div id="orderFormula" style="display:none; margin-top:20px;">
+    <div style="background:linear-gradient(135deg,var(--teal),var(--navy)); border-radius:18px; padding:24px; color:#fff; text-align:center;">
+      <div style="font-size:1.1em; font-weight:900; letter-spacing:.05em;">🛡️ 外食護身符</div>
+      <div style="font-size:.82em; margin-top:10px; line-height:2;">
+        蛋白質 ＋ 蔬菜 ＋ 適量主食 ＋ 無糖飲<br>
+        <strong>醬料減半、炸物換烤物、飯後走 10 分鐘</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━ P9 真餓還是假餓 ━━━━ -->
+<section>
+  <h2><i class="fa fa-question-circle accent"></i> 真餓？還是假餓？</h2>
+  <p class="subtitle">依序回答四個問題，找出你現在的狀態</p>
+  <div id="hungerQuiz" style="margin-top:16px;">
+    <div id="hq-step" style="font-size:.72em; color:var(--teal); font-weight:700; margin-bottom:8px;"></div>
+    <div id="hq-question" style="font-size:.95em; font-weight:700; margin-bottom:16px;"></div>
+    <div class="quiz-options" id="hq-options"></div>
+    <div class="result-box" id="hq-result" style="display:none;"></div>
+    <button class="btn btn-outline" id="hq-reset" onclick="resetHungerQuiz()" style="display:none; margin-top:14px; font-size:.75em;">
+      <i class="fa fa-rotate-left"></i> 重新測驗
+    </button>
+  </div>
+</section>
+
+<!-- ━━━━ P10 點心抽屜 ━━━━ -->
+<section>
+  <h2><i class="fa fa-box-open teal"></i> 點心抽屜</h2>
+  <p class="subtitle">點擊查看建議份量與適合時機</p>
+  <div class="snack-grid" style="margin-top:16px;" id="snackGrid">
+    <div class="snack-card" onclick="toggleSnack(this)">
+      <div class="snack-icon">🥛</div>
+      <div class="snack-name">無糖豆漿</div>
+      <div class="snack-detail">
+        <strong>份量：</strong>250 ml<br>
+        <strong>時機：</strong>早上或下午茶<br>
+        <strong>搭配：</strong>全麥餅乾或水果
+      </div>
+    </div>
+    <div class="snack-card" onclick="toggleSnack(this)">
+      <div class="snack-icon">🍦</div>
+      <div class="snack-name">無糖優格</div>
+      <div class="snack-detail">
+        <strong>份量：</strong>100–150 g<br>
+        <strong>時機：</strong>飯後或下午點心<br>
+        <strong>搭配：</strong>新鮮莓果或堅果
+      </div>
+    </div>
+    <div class="snack-card" onclick="toggleSnack(this)">
+      <div class="snack-icon">🥚</div>
+      <div class="snack-name">茶葉蛋</div>
+      <div class="snack-detail">
+        <strong>份量：</strong>1–2 顆<br>
+        <strong>時機：</strong>早餐補充或下午<br>
+        <strong>搭配：</strong>無糖飲料
+      </div>
+    </div>
+    <div class="snack-card" onclick="toggleSnack(this)">
+      <div class="snack-icon">🫘</div>
+      <div class="snack-name">毛豆</div>
+      <div class="snack-detail">
+        <strong>份量：</strong>1 小碗（約 50 g）<br>
+        <strong>時機：</strong>下午茶<br>
+        <strong>搭配：</strong>無調味最佳
+      </div>
+    </div>
+    <div class="snack-card" onclick="toggleSnack(this)">
+      <div class="snack-icon">🌰</div>
+      <div class="snack-name">堅果</div>
+      <div class="snack-detail">
+        <strong>份量：</strong>一湯匙（約 15 g）<br>
+        <strong>時機：</strong>下午或飯前<br>
+        <strong>搭配：</strong>水，避免含糖<br>版本
+      </div>
+    </div>
+    <div class="snack-card" onclick="toggleSnack(this)">
+      <div class="snack-icon">🍊</div>
+      <div class="snack-name">水果</div>
+      <div class="snack-detail">
+        <strong>份量：</strong>1 份（拳頭大小）<br>
+        <strong>時機：</strong>兩餐之間<br>
+        <strong>搭配：</strong>搭蛋白質更穩定
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━ P11 情緒性進食 ━━━━ -->
+<section>
+  <h2><i class="fa fa-heart accent"></i> 情緒性進食</h2>
+  <p class="subtitle">辨識壓力飲食的觸發點</p>
+  <div class="two-col" style="margin-top:14px;">
+    <div>
+      <h3>常見觸發情境</h3>
+      <div style="display:flex; flex-direction:column; gap:10px; margin-top:12px;">
+        <div class="card" onclick="showEmoTip(this,'deadline')" style="font-size:.78em;">
+          <span style="font-size:1.4em;">⏰</span> 截止日逼近
+        </div>
+        <div class="card" onclick="showEmoTip(this,'meeting')" style="font-size:.78em;">
+          <span style="font-size:1.4em;">😤</span> 開完讓人抓狂的會議
+        </div>
+        <div class="card" onclick="showEmoTip(this,'alone')" style="font-size:.78em;">
+          <span style="font-size:1.4em;">🌙</span> 一個人獨自加班
+        </div>
+        <div class="card" onclick="showEmoTip(this,'bored')" style="font-size:.78em;">
+          <span style="font-size:1.4em;">🥱</span> 無聊空閒
+        </div>
+      </div>
+    </div>
+    <div>
+      <h3>先做這三步</h3>
+      <div style="display:flex; flex-direction:column; gap:10px; margin-top:12px; font-size:.8em;">
+        <div class="card fragment" style="cursor:default;">
+          <span style="color:var(--teal); font-weight:700;">步驟 1</span><br>
+          先喝一杯水，等 5 分鐘
+        </div>
+        <div class="card fragment" style="cursor:default;">
+          <span style="color:var(--teal); font-weight:700;">步驟 2</span><br>
+          問自己：任何食物都可以嗎？<br>
+          <span style="color:#90A4AE; font-size:.85em;">若只想吃特定甜食→可能是情緒性的</span>
+        </div>
+        <div class="card fragment" style="cursor:default;">
+          <span style="color:var(--teal); font-weight:700;">步驟 3</span><br>
+          若仍想吃，選較不後悔的選項<br>
+          <span style="color:#90A4AE; font-size:.85em;">堅果＞薯片，水果＞糖果</span>
+        </div>
+      </div>
+      <div class="result-box" id="emoTipResult" style="margin-top:12px; display:none;"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━ P12 壓力飲食類型 ━━━━ -->
+<section>
+  <h2><i class="fa fa-chart-pie teal"></i> 你屬於哪種類型？</h2>
+  <p class="subtitle">壓力飲食的四種型態</p>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:16px;">
+    <div class="card fragment" style="cursor:default; border-left:5px solid var(--green);">
+      <div style="font-size:1.6em;">🍽️</div>
+      <div style="font-weight:700; margin:.3em 0;">生理性飢餓</div>
+      <div style="font-size:.75em; color:#546E7A; line-height:1.6;">
+        距上餐 3–4 小時，任何食物都可以接受，飽了就停止
+      </div>
+      <div style="margin-top:.5em;"><span class="tag tag-green">正常</span></div>
+    </div>
+    <div class="card fragment" style="cursor:default; border-left:5px solid var(--yellow);">
+      <div style="font-size:1.6em;">😋</div>
+      <div style="font-weight:700; margin:.3em 0;">嘴饞</div>
+      <div style="font-size:.75em; color:#546E7A; line-height:1.6;">
+        不餓但想吃，通常只想特定食物，吃了後悔
+      </div>
+      <div style="margin-top:.5em;"><span class="tag tag-orange">偶爾 ok</span></div>
+    </div>
+    <div class="card fragment" style="cursor:default; border-left:5px solid var(--orange);">
+      <div style="font-size:1.6em;">😤</div>
+      <div style="font-weight:700; margin:.3em 0;">壓力性進食</div>
+      <div style="font-size:.75em; color:#546E7A; line-height:1.6;">
+        遇到壓力事件後突然想吃，偏好高糖高脂食物
+      </div>
+      <div style="margin-top:.5em;"><span class="tag tag-red">需要留意</span></div>
+    </div>
+    <div class="card fragment" style="cursor:default; border-left:5px solid #9C27B0;">
+      <div style="font-size:1.6em;">😵</div>
+      <div style="font-weight:700; margin:.3em 0;">疲勞性進食</div>
+      <div style="font-size:.75em; color:#546E7A; line-height:1.6;">
+        睡眠不足導致飢餓素上升，食慾難以控制
+      </div>
+      <div style="margin-top:.5em;"><span class="tag tag-red">改善睡眠優先</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━ P13 血糖曲線 ━━━━ -->
+<section>
+  <h2><i class="fa fa-chart-line accent"></i> 血糖過山車</h2>
+  <p class="subtitle">午餐選擇如何影響下午精神狀態</p>
+  <div class="two-col" style="margin-top:14px; align-items:center;">
+    <div class="chart-wrap">
+      <canvas id="glucoseChart" height="220"></canvas>
+    </div>
+    <div>
+      <div style="display:flex; flex-direction:column; gap:12px; font-size:.8em;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div style="width:24px; height:4px; background:var(--orange); border-radius:4px;"></div>
+          <span>高糖＋精製澱粉午餐：血糖大幅震盪</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div style="width:24px; height:4px; background:var(--teal); border-radius:4px;"></div>
+          <span>蛋白質＋蔬菜＋適量主食：較平穩曲線</span>
+        </div>
+      </div>
+      <div class="result-box" style="margin-top:16px;">
+        午後嗜睡不一定只由血糖造成，睡眠不足、缺水、過量進食與久坐也可能參與。
+      </div>
+      <div style="display:flex; gap:10px; margin-top:14px; flex-wrap:wrap;">
+        <button class="btn btn-teal" onclick="animateChart()" style="font-size:.75em;">
+          <i class="fa fa-play"></i> 播放曲線
+        </button>
+        <button class="btn btn-outline" onclick="resetChart()" style="font-size:.75em;">
+          <i class="fa fa-rotate-left"></i> 重置
+        </button>
+      </div>
+      <p class="disclaimer">示意圖，個人血糖反應因人而異。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━ P14 水分補充 ━━━━ -->
+<section>
+  <h2><i class="fa fa-droplet teal"></i> 水分與專注力</h2>
+  <p class="subtitle">點擊進度杯，追蹤今日喝水狀況</p>
+  <div style="display:flex; align-items:center; gap:30px; margin-top:20px; flex-wrap:wrap;">
+    <div>
+      <div id="waterCups" style="display:grid; grid-template-columns:repeat(4,1fr); gap:14px;">
+      </div>
+      <div style="margin-top:14px; font-size:.8em; color:#546E7A; text-align:center;">
+        每杯 250 ml｜建議每日 8 杯（2000 ml）
+      </div>
+    </div>
+    <div style="flex:1; min-width:200px;">
+      <div class="result-box" id="waterResult">點擊杯子記錄喝水進度 💧</div>
+      <div style="margin-top:16px; background:#fff; border-radius:16px; padding:16px; box-shadow:var(--card-shadow);">
+        <h3 style="font-size:.85em;">缺水對工作的影響</h3>
+        <div style="font-size:.75em; line-height:2; color:#546E7A; margin-top:.5em;">
+          🧠 專注力下降<br>
+          😴 疲勞感增加<br>
+          🤕 頭痛風險升高<br>
+          😠 情緒波動加大
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━ P15 五個專注力習慣（翻牌） ━━━━ -->
+<section>
+  <h2><i class="fa fa-bolt teal"></i> 五個專注力習慣</h2>
+  <p class="subtitle">點擊卡片翻面，查看具體做法</p>
+  <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:14px; margin-top:16px;">
+    <div class="flip-card" onclick="flipCard(this)">
+      <div class="flip-card-inner">
+        <div class="flip-front">
+          <div class="flip-icon">🍳</div>
+          <div class="flip-title">早餐蛋白質</div>
+        </div>
+        <div class="flip-back">
+          <div class="flip-tip">早餐加入蛋、豆漿或起司，有助穩定上午血糖與專注力</div>
+        </div>
+      </div>
+    </div>
+    <div class="flip-card" onclick="flipCard(this)">
+      <div class="flip-card-inner">
+        <div class="flip-front">
+          <div class="flip-icon">🥗</div>
+          <div class="flip-title">午餐不過油</div>
+        </div>
+        <div class="flip-back">
+          <div class="flip-tip">高油脂午餐會延長消化時間，加重下午嗜睡感</div>
+        </div>
+      </div>
+    </div>
+    <div class="flip-card" onclick="flipCard(this)">
+      <div class="flip-card-inner">
+        <div class="flip-front">
+          <div class="flip-icon">⏰</div>
+          <div class="flip-title">規律進食</div>
+        </div>
+        <div class="flip-back">
+          <div class="flip-tip">每 4–5 小時進食一次，穩定血糖有助於維持認知功能</div>
+        </div>
+      </div>
+    </div>
+    <div class="flip-card" onclick="flipCard(this)">
+      <div class="flip-card-inner">
+        <div class="flip-front">
+          <div class="flip-icon">💧</div>
+          <div class="flip-title">規律補水</div>
+        </div>
+        <div class="flip-back">
+          <div class="flip-tip">每小時補水 200–250 ml，感到口渴時已輕微脫水</div>
+        </div>
+      </div>
+    </div>
+    <div class="flip-card" onclick="flipCard(this)">
+      <div class="flip-card-inner">
+        <div class="flip-front">
+          <div class="flip-icon">🚶</div>
+          <div class="flip-title">飯後走路</div>
+        </div>
+        <div class="flip-back">
+          <div class="flip-tip">飯後 10–15 分鐘散步，有助減緩血糖上升、提振下午精神</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━ P16 一日時間軸 ━━━━ -->
+<section>
+  <h2><i class="fa fa-clock teal"></i> 上班族一日健康時間軸</h2>
+  <p class="subtitle">把健康變成生活節奏的一部分</p>
+  <div class="timeline" style="margin-top:16px;">
+    <div class="timeline-item fragment">
+      <div class="timeline-time">08:30</div>
+      <div class="timeline-icon">🍳</div>
+      <div class="timeline-text"><strong>早餐</strong>｜蛋白質＋蔬菜，減少精製澱粉</div>
+    </div>
+    <div class="timeline-item fragment">
+      <div class="timeline-time">10:30</div>
+      <div class="timeline-icon">💧</div>
+      <div class="timeline-text"><strong>補水</strong>｜喝水 250 ml，離開座位一次</div>
+    </div>
+    <div class="timeline-item fragment">
+      <div class="timeline-time">12:15</div>
+      <div class="timeline-icon">🥗</div>
+      <div class="timeline-text"><strong>午餐</strong>｜10 秒公式點餐，醬料減半</div>
+    </div>
+    <div class="timeline-item fragment">
+      <div class="timeline-time">12:45</div>
+      <div class="timeline-icon">🚶</div>
+      <div class="timeline-text"><strong>飯後散步</strong>｜10 分鐘，有助血糖調節</div>
+    </div>
+    <div class="timeline-item fragment">
+      <div class="timeline-time">15:30</div>
+      <div class="timeline-icon">🌰</div>
+      <div class="timeline-text"><strong>健康點心</strong>｜堅果或茶葉蛋，避免高糖</div>
+    </div>
+    <div class="timeline-item fragment">
+      <div class="timeline-time">19:00</div>
+      <div class="timeline-icon">🍚</div>
+      <div class="timeline-text"><strong>晚餐</strong>｜七分飽，睡前 3 小時避免大量進食</div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━ P17 四週計畫 ━━━━ -->
+<section>
+  <h2><i class="fa fa-calendar-check green"></i> 四週健康計畫</h2>
+  <p class="subtitle">選擇你本週想執行的任務</p>
+  <div class="week-grid" style="margin-top:16px;" id="weekGrid">
+    <div class="week-card" onclick="chooseWeek(this,'第 1 週','飲料先改無糖','🧋')">
+      <div class="week-num">第 1 週</div>
+      <div class="week-icon">🧋</div>
+      <div class="week-label">飲料先改無糖</div>
+    </div>
+    <div class="week-card" onclick="chooseWeek(this,'第 2 週','午餐多加一份蔬菜','🥦')">
+      <div class="week-num">第 2 週</div>
+      <div class="week-icon">🥦</div>
+      <div class="week-label">午餐多加一份蔬菜</div>
+    </div>
+    <div class="week-card" onclick="chooseWeek(this,'第 3 週','選擇健康點心','🌰')">
+      <div class="week-num">第 3 週</div>
+      <div class="week-icon">🌰</div>
+      <div class="week-label">選擇健康點心</div>
+    </div>
+    <div class="week-card" onclick="chooseWeek(this,'第 4 週','飯後走路 10 分鐘','🚶')">
+      <div class="week-num">第 4 週</div>
+      <div class="week-icon">🚶</div>
+      <div class="week-label">飯後走路 10 分鐘</div>
+    </div>
+  </div>
+  <div class="result-box" id="weekResult" style="margin-top:20px; display:none;"></div>
+  <div id="weekActions" style="display:none; margin-top:12px; display:none; gap:12px; flex-wrap:wrap;">
+    <button class="btn btn-primary" id="saveWeekBtn" onclick="saveWeekCard()" style="font-size:.75em;">
+      <i class="fa fa-download"></i> 儲存行動卡
+    </button>
+  </div>
+</section>
+
+<!-- ━━━━ P18 企業健康 HR 模擬器 ━━━━ -->
+<section>
+  <h2><i class="fa fa-building teal"></i> 企業健康策略模擬器</h2>
+  <p class="subtitle">選擇想導入的措施，查看預期影響（趣味示意，非精確模型）</p>
+  <div class="two-col" style="margin-top:14px; gap:30px;">
+    <div>
+      <div class="hr-options" id="hrOptions">
+        <label class="hr-option">
+          <input type="checkbox" onchange="updateHR()"> 健檢後一對一營養諮詢
+        </label>
+        <label class="hr-option">
+          <input type="checkbox" onchange="updateHR()"> 健康會議餐（低糖低油）
+        </label>
+        <label class="hr-option">
+          <input type="checkbox" onchange="updateHR()"> 走路會議制度
+        </label>
+        <label class="hr-option">
+          <input type="checkbox" onchange="updateHR()"> 部門健康挑戰活動
+        </label>
+        <label class="hr-option">
+          <input type="checkbox" onchange="updateHR()"> 茶水間健康零食
+        </label>
+      </div>
+    </div>
+    <div>
+      <div class="meter-row" id="hrMeters">
+        <div class="meter-item">
+          <div class="meter-label">員工支持度</div>
+          <div class="meter-bar-bg">
+            <div class="meter-bar" id="m-support" style="width:20%; background:var(--green);"></div>
+          </div>
+          <span id="m-support-val" style="font-size:.75em; min-width:36px; text-align:right;">20%</span>
+        </div>
+        <div class="meter-item">
+          <div class="meter-label">執行難度</div>
+          <div class="meter-bar-bg">
+            <div class="meter-bar" id="m-effort" style="width:10%; background:var(--orange);"></div>
+          </div>
+          <span id="m-effort-val" style="font-size:.75em; min-width:36px; text-align:right;">低</span>
+        </div>
+        <div class="meter-item">
+          <div class="meter-label">預估影響範圍</div>
+          <div class="meter-bar-bg">
+            <div class="meter-bar" id="m-impact" style="width:15%; background:var(--teal);"></div>
+          </div>
+          <span id="m-impact-val" style="font-size:.75em; min-width:36px; text-align:right;">15%</span>
+        </div>
+      </div>
+      <div class="result-box" id="hrResult" style="margin-top:16px;">請從左側選擇措施</div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━ P19 結語 ━━━━ -->
+<section data-background="linear-gradient(135deg, #0B2E59 0%, #168C96 100%)">
+  <div class="center-all" style="color:#fff;">
+    <div style="font-size:3em; margin-bottom:.3em;">💡</div>
+    <h2 style="color:#fff; font-size:1.6em; line-height:1.4;">
+      健康不是更努力，<br>
+      <span style="color:var(--yellow);">而是把正確選擇變得更容易</span>
+    </h2>
+    <p style="color:rgba(255,255,255,.8); margin-top:1em; font-size:.85em; max-width:600px; text-align:center; line-height:1.8;">
+      從今天開始，一次只做一個改變。<br>
+      飲料改無糖、午餐多一份菜、飯後走 10 分鐘。<br>
+      四週後，你會看見不一樣的自己。
+    </p>
+    <button class="btn btn-primary" onclick="Reveal.next()" style="margin-top:28px; font-size:.85em;">
+      <i class="fa fa-user"></i> 認識沈宛徵營養師
+    </button>
+  </div>
+</section>
+
+<!-- ━━━━ P20 宛徵營養師 ━━━━ -->
+<section>
+  <div class="profile-layout" style="height:90vh; padding:30px 0;">
+    <div>
+      <img class="profile-photo" src="images/profile.jpg" alt="沈宛徵營養師">
+    </div>
+    <div>
+      <div style="font-size:.65em; color:var(--teal); font-weight:700; letter-spacing:.1em; margin-bottom:.5em;">
+        生生優活南京健康管理診所
+      </div>
+      <h1 style="font-size:1.6em; margin-bottom:.2em;">沈宛徵</h1>
+      <h2 style="font-size:.95em; color:var(--teal); margin-bottom:1em;">總營養師</h2>
+      <div style="display:flex; flex-direction:column; gap:10px; font-size:.8em;">
+        <div style="display:flex; gap:10px; align-items:center;">
+          <span class="tag tag-blue">糖尿病</span>
+          <span>CGM 連續血糖監測營養管理</span>
+        </div>
+        <div style="display:flex; gap:10px; align-items:center;">
+          <span class="tag tag-green">體重管理</span>
+          <span>GLP-1 使用者營養照護</span>
+        </div>
+        <div style="display:flex; gap:10px; align-items:center;">
+          <span class="tag tag-orange">代謝症候群</span>
+          <span>代謝調節與生活介入</span>
+        </div>
+        <div style="display:flex; gap:10px; align-items:center;">
+          <span class="tag tag-blue">職場健康</span>
+          <span>企業健康促進講座</span>
+        </div>
+      </div>
+      <div style="margin-top:20px; font-size:.8em; line-height:2; color:#546E7A;">
+        <i class="fa fa-envelope" style="color:var(--teal); width:20px;"></i>
+        j03audrey@gmail.com
+      </div>
+      <div style="margin-top:20px; padding:16px; background:linear-gradient(135deg,var(--teal),var(--navy)); border-radius:14px; color:#fff; font-size:.8em; font-weight:700; font-style:italic;">
+        「健康不是更努力，而是把正確選擇變得更容易。」
+      </div>
+    </div>
+    <div>
+      <div class="qr-box">
+        <img src="images/qrcode.png" alt="掃描取得更多衛教資訊" style="width:180px; height:180px; border-radius:8px; display:block; margin:0 auto 10px;">
+        <div style="font-size:.72em; color:#546E7A;">
+          掃描取得<br>更多衛教資訊
+        </div>
+      </div>
+      <div style="margin-top:16px; font-size:.68em; color:#90A4AE; text-align:center; line-height:1.8;">
+        本簡報內容僅供健康教育，<br>不取代個別醫療診斷或治療建議。
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /slides -->
+</div><!-- /reveal -->
+
+<!-- ── Scripts ── -->
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
+<script>
+
+// ── Reveal init ──
+Reveal.initialize({
+  hash: true, controls: true, progress: true,
+  slideNumber: 'c/t', center: false,
+  transition: 'slide', backgroundTransition: 'fade',
+  touch: true, width: 1280, height: 720,
+  margin: 0.04
+});
+
+// ━━━━ P2 症狀勾選 ━━━━
+function toggleSymptom(card) {
+  card.classList.toggle('selected');
+  const count = document.querySelectorAll('#symptomGrid .selected').length;
+  const r = document.getElementById('symptomResult');
+  r.className = 'result-box';
+  if (!count) { r.textContent = '點選符合你的項目，查看結果 👇'; return; }
+  if (count === 1) { r.textContent = '你中了 1 項：先找出最容易改善的一個習慣開始。'; }
+  else if (count === 2) { r.className = 'result-box warn'; r.textContent = '你中了 2 項：工作節奏可能已開始影響你的健康狀態。'; }
+  else { r.className = 'result-box danger'; r.textContent = `你中了 ${count} 項：不是你不自律，而是生活系統正在讓健康變困難。`; }
+}
+
+// ━━━━ P3 代謝症候群 ━━━━
+function toggleMeta(li) {
+  li.classList.toggle('checked');
+  const cb = li.querySelector('.cb i');
+  if (li.classList.contains('checked')) { cb.style.display = 'inline'; }
+  else { cb.style.display = 'none'; }
+  const count = document.querySelectorAll('#metaChecklist .checked').length;
+  const r = document.getElementById('metaResult');
+  r.className = 'result-box';
+  if (!count) { r.textContent = '請勾選項目'; return; }
+  if (count <= 1) { r.textContent = `目前勾選 ${count} 項，暫未達代謝症候群判定，持續保持良好習慣。`; }
+  else if (count === 2) { r.className = 'result-box warn'; r.textContent = '勾選 2 項，已接近警戒線，建議調整飲食與生活習慣。'; }
+  else { r.className = 'result-box danger'; r.textContent = `勾選 ${count} 項，符合代謝症候群判定條件，建議尋求醫療與營養專業評估。`; }
+}
+
+// ━━━━ P4 四面埋伏 ━━━━
+const factorData = {
+  sit:    { title:'久坐的影響', appetite:'飢餓素下降，但整體消耗少', sugar:'胰島素敏感性下降', waist:'內臟脂肪風險增加', work:'下午嗜睡感明顯' },
+  eat:    { title:'外食的影響', appetite:'高鈉高油刺激食慾', sugar:'精製澱粉導致血糖波動', waist:'熱量與油脂難以控制', work:'油膩午餐加重下午疲倦' },
+  stress: { title:'壓力的影響', appetite:'皮質醇升高，偏好高糖高脂', sugar:'血糖調節受干擾', waist:'腹部脂肪積累風險', work:'專注力與決策能力下降' },
+  sleep:  { title:'睡眠不足的影響', appetite:'飢餓素上升、飽足素下降', sugar:'空腹血糖調節變差', waist:'體重增加風險升高', work:'記憶力與反應速度下滑' }
+};
+function showFactor(key) {
+  document.querySelectorAll('.factor-btn').forEach(b => b.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  const d = factorData[key];
+  document.getElementById('factorDetail').style.display = 'block';
+  document.getElementById('factorContent').textContent = d.title;
+  document.getElementById('f-appetite').textContent = d.appetite;
+  document.getElementById('f-sugar').textContent    = d.sugar;
+  document.getElementById('f-waist').textContent    = d.waist;
+  document.getElementById('f-work').textContent     = d.work;
+}
+
+// ━━━━ P5 隱形成本 ━━━━
+function showCost(el, type, name, detail) {
+  document.querySelectorAll('.cost-item').forEach(i => i.classList.remove('active'));
+  el.classList.add('active');
+  const r = document.getElementById('costResult');
+  r.className = type === 'invest' ? 'result-box' : 'result-box warn';
+  r.textContent = `${name}：${detail}`;
+}
+
+// ━━━━ P6 盾牌 ━━━━
+function toggleShield(card) {
+  card.classList.toggle('open');
+}
+
+// ━━━━ P7 外食選擇 ━━━━
+function chooseMeal(choice) {
+  const a = document.getElementById('mealA');
+  const b = document.getElementById('mealB');
+  const r = document.getElementById('mealResult');
+  a.style.border = '3px solid transparent';
+  b.style.border = '3px solid transparent';
+  if (choice === 'A') {
+    a.style.border = '3px solid var(--orange)';
+    a.classList.add('wrong'); b.classList.remove('correct');
+    r.className = 'result-box warn';
+    r.innerHTML = '選項 A 的油、鈉、精製澱粉同時偏高，容易造成下午血糖震盪與疲憊感。這組不是絕對不能吃，但較難維持下午的飽足感與精神穩定。';
+  } else {
+    b.style.border = '3px solid var(--green)';
+    b.classList.add('correct'); a.classList.remove('wrong');
+    r.className = 'result-box';
+    r.innerHTML = '選項 B 蛋白質充足、蔬菜豐富、澱粉適量，較能維持午後血糖平穩，有助於保持下午的工作專注力。';
+  }
+}
+
+// ━━━━ P8 點餐步驟 ━━━━
+let stepShown = -1;
+function showStep(idx) {
+  if (idx <= stepShown) return;
+  stepShown = idx;
+  const steps = document.querySelectorAll('#orderSteps .step-item');
+  for (let i = 0; i <= idx; i++) steps[i].classList.add('show');
+  if (idx >= 3) {
+    setTimeout(() => { document.getElementById('orderFormula').style.display = 'block'; }, 300);
+  }
+}
+
+// ━━━━ P9 真餓假餓測驗 ━━━━
+const hungerQ = [
+  { q:'距離上一餐是否已超過 3–4 小時？', yes:'繼續確認', no:'可能不是真正飢餓' },
+  { q:'現在任何食物（包括清淡蔬菜）都可以接受嗎？', yes:'繼續確認', no:'可能偏向嘴饞或壓力性進食' },
+  { q:'最近一小時是否剛經歷壓力事件？', yes:'留意壓力性進食', no:'繼續確認' },
+  { q:'是否只想吃特定甜食或炸物？', yes:'可能是嘴饞或壓力飢餓', no:'判斷結果' }
+];
+const hungerResult = ['這可能是嘴饞，不是真餓。試著喝水或轉移注意力 15 分鐘。',
+  '這可能是壓力性進食。先識別壓力來源，再決定是否要吃。',
+  '這可能是壓力飢餓，建議先做 3 次深呼吸，再選擇健康點心。',
+  '這符合生理性飢餓的特徵，可以正常進食，選擇均衡的食物組合。'];
+let hqIdx = 0;
+let hqPath = [];
+function renderHQ() {
+  if (hqIdx >= hungerQ.length) {
+    document.getElementById('hq-step').textContent = '測驗結果';
+    document.getElementById('hq-question').textContent = '';
+    document.getElementById('hq-options').innerHTML = '';
+    const r = document.getElementById('hq-result');
+    const pathStr = hqPath.join(',');
+    let res;
+    if (hqPath[0] === 'no') res = hungerResult[0];
+    else if (hqPath[1] === 'no') res = hungerResult[1];
+    else if (hqPath[2] === 'yes') res = hungerResult[2];
+    else if (hqPath[3] === 'yes') res = hungerResult[1];
+    else res = hungerResult[3];
+    r.style.display = 'block'; r.textContent = res;
+    document.getElementById('hq-reset').style.display = 'inline-block';
+    return;
+  }
+  document.getElementById('hq-step').textContent = `問題 ${hqIdx + 1} / ${hungerQ.length}`;
+  document.getElementById('hq-question').textContent = hungerQ[hqIdx].q;
+  document.getElementById('hq-options').innerHTML = `
+    <div class="quiz-option" onclick="answerHQ('yes')">✅ 是</div>
+    <div class="quiz-option" onclick="answerHQ('no')">❌ 否</div>
+  `;
+  document.getElementById('hq-result').style.display = 'none';
+  document.getElementById('hq-reset').style.display = 'none';
+}
+function answerHQ(ans) {
+  hqPath.push(ans);
+  hqIdx++;
+  renderHQ();
+}
+function resetHungerQuiz() { hqIdx = 0; hqPath = []; renderHQ(); }
+Reveal.on('slidechanged', e => {
+  if (e.indexh === 8) renderHQ(); // P9 is index 8 (0-based)
+});
+
+// ━━━━ P10 點心抽屜 ━━━━
+function toggleSnack(card) {
+  const isOpen = card.classList.contains('open');
+  document.querySelectorAll('.snack-card').forEach(c => c.classList.remove('open'));
+  if (!isOpen) card.classList.add('open');
+}
+
+// ━━━━ P11 情緒觸發 ━━━━
+const emoTips = {
+  deadline: '截止日壓力讓皮質醇飆升，先站起來走動 2 分鐘，重新排列任務優先順序再繼續。',
+  meeting:  '會議後的憤怒感會觸發想吃甜食的衝動，可以先喝一杯水，讓情緒稍微平復。',
+  alone:    '獨自加班時孤獨感容易誘發進食，嘗試播放喜歡的背景音樂取代零食安慰。',
+  bored:    '無聊時進食是最常見的假飢餓，先給自己一個 15 分鐘的小任務，再評估是否真的餓了。'
+};
+function showEmoTip(el, key) {
+  document.querySelectorAll('.card[onclick*="showEmoTip"]').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  const r = document.getElementById('emoTipResult');
+  r.style.display = 'block'; r.textContent = emoTips[key];
+}
+
+// ━━━━ P13 血糖曲線 ━━━━
+let glucoseChart = null;
+const timeLabels = ['12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30'];
+const highCurve  = [95, 160, 185, 170, 130, 105, 90, 100];
+const lowCurve   = [95, 130, 145, 138, 120, 110, 100, 98];
+
+Reveal.on('slidechanged', e => {
+  if (e.indexh === 12) initGlucoseChart();
+});
+function initGlucoseChart() {
+  if (glucoseChart) return;
+  const ctx = document.getElementById('glucoseChart').getContext('2d');
+  glucoseChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: timeLabels,
+      datasets: [
+        { label: '高糖午餐', data: Array(8).fill(null), borderColor: '#F28C28', backgroundColor: 'rgba(242,140,40,.1)', tension: .4, fill: true, borderWidth: 3, pointRadius: 4 },
+        { label: '均衡午餐', data: Array(8).fill(null), borderColor: '#168C96', backgroundColor: 'rgba(22,140,150,.08)', tension: .4, fill: true, borderWidth: 3, pointRadius: 4 }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: true,
+      plugins: { legend: { position: 'top', labels: { font: { size: 12 } } } },
+      scales: {
+        y: { min: 70, max: 200, title: { display: true, text: '血糖 mg/dL', font: { size: 11 } } },
+        x: { title: { display: true, text: '時間', font: { size: 11 } } }
+      },
+      animation: { duration: 0 }
+    }
+  });
+}
+let animFrames = 0;
+function animateChart() {
+  if (!glucoseChart) return;
+  animFrames = 0;
+  glucoseChart.data.datasets[0].data = Array(8).fill(null);
+  glucoseChart.data.datasets[1].data = Array(8).fill(null);
+  glucoseChart.update();
+  const interval = setInterval(() => {
+    if (animFrames >= 8) { clearInterval(interval); return; }
+    glucoseChart.data.datasets[0].data[animFrames] = highCurve[animFrames];
+    glucoseChart.data.datasets[1].data[animFrames] = lowCurve[animFrames];
+    animFrames++;
+    glucoseChart.update();
+  }, 300);
+}
+function resetChart() {
+  if (!glucoseChart) return;
+  glucoseChart.data.datasets[0].data = Array(8).fill(null);
+  glucoseChart.data.datasets[1].data = Array(8).fill(null);
+  glucoseChart.update();
+}
+
+// ━━━━ P14 喝水 ━━━━
+let waterCount = 0;
+function initWaterCups() {
+  const grid = document.getElementById('waterCups');
+  grid.innerHTML = '';
+  for (let i = 0; i < 8; i++) {
+    const div = document.createElement('div');
+    div.style.cssText = 'background:#fff; border-radius:12px; padding:14px; box-shadow:0 2px 8px rgba(0,0,0,.08); text-align:center; cursor:pointer; transition:.2s; font-size:1.8em;';
+    div.textContent = '🥛';
+    div.dataset.idx = i;
+    div.onclick = () => toggleWater(i);
+    grid.appendChild(div);
+  }
+}
+function toggleWater(idx) {
+  waterCount = idx + 1;
+  const cups = document.querySelectorAll('#waterCups div');
+  cups.forEach((c, i) => {
+    c.textContent = i < waterCount ? '💧' : '🥛';
+    c.style.background = i < waterCount ? '#E0F7FA' : '#fff';
+  });
+  const r = document.getElementById('waterResult');
+  if (waterCount < 4) { r.className='result-box warn'; r.textContent = `今日喝了 ${waterCount} 杯（${waterCount*250} ml），建議再多補充。`; }
+  else if (waterCount < 8) { r.className='result-box'; r.textContent = `今日喝了 ${waterCount} 杯（${waterCount*250} ml），繼續保持！`; }
+  else { r.className='result-box'; r.textContent = `今日達標 🎉 喝了 8 杯（2000 ml），很棒！`; }
+}
+Reveal.on('slidechanged', e => {
+  if (e.indexh === 13) { waterCount = 0; initWaterCups(); }
+});
+
+// ━━━━ P15 翻牌 ━━━━
+function flipCard(card) { card.classList.toggle('flipped'); }
+
+// ━━━━ P17 四週計畫 ━━━━
+function chooseWeek(card, week, task, icon) {
+  document.querySelectorAll('.week-card').forEach(c => c.classList.remove('chosen'));
+  card.classList.add('chosen');
+  const r = document.getElementById('weekResult');
+  r.style.display = 'block';
+  r.innerHTML = `<strong>${icon} 我的本週任務（${week}）</strong><br>${task}，每週至少執行 5 天。`;
+  r.dataset.task = `${week}｜${task}`;
+  const actions = document.getElementById('weekActions');
+  actions.style.display = 'flex';
+}
+function saveWeekCard() {
+  const task = document.getElementById('weekResult').dataset.task || '健康任務';
+  const w = window.open('', '_blank', 'width=500,height=300');
+  w.document.write(`<html><head><title>行動卡</title>
+  <style>body{font-family:"Microsoft JhengHei",sans-serif;background:#FFF3E0;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;}
+  .card{background:#fff;border-radius:20px;padding:40px 50px;box-shadow:0 8px 30px rgba(0,0,0,.15);text-align:center;border-top:6px solid #F28C28;}
+  h2{color:#0B2E59;margin-bottom:.5em;}p{color:#546E7A;font-size:1.1em;line-height:1.8;}</style></head>
+  <body><div class="card"><h2>🎯 我的健康行動卡</h2><p>${task}</p>
+  <p style="font-size:.85em;color:#90A4AE;margin-top:1em;">沈宛徵營養師 × 職場健康</p></div></body></html>`);
+}
+
+// ━━━━ P18 HR 模擬器 ━━━━
+const hrWeights = [
+  { support: 25, effort: 35, impact: 30 },
+  { support: 18, effort: 20, impact: 22 },
+  { support: 15, effort: 15, impact: 18 },
+  { support: 20, effort: 25, impact: 20 },
+  { support: 12, effort: 10, impact: 15 }
+];
+function updateHR() {
+  const boxes = document.querySelectorAll('#hrOptions input');
+  let s=20, e=10, i=15;
+  boxes.forEach((cb, idx) => {
+    const parent = cb.parentElement;
+    if (cb.checked) { parent.classList.add('active'); s+=hrWeights[idx].support; e+=hrWeights[idx].effort; i+=hrWeights[idx].impact; }
+    else { parent.classList.remove('active'); }
+  });
+  s = Math.min(s, 100); e = Math.min(e, 100); i = Math.min(i, 100);
+  document.getElementById('m-support').style.width = s+'%';
+  document.getElementById('m-effort').style.width  = e+'%';
+  document.getElementById('m-impact').style.width  = i+'%';
+  document.getElementById('m-support-val').textContent = s+'%';
+  document.getElementById('m-effort-val').textContent  = e > 60 ? '高' : e > 35 ? '中' : '低';
+  document.getElementById('m-impact-val').textContent  = i+'%';
+  const chosen = [...boxes].filter(c=>c.checked).length;
+  const r = document.getElementById('hrResult');
+  if (!chosen) { r.textContent='請從左側選擇措施'; return; }
+  if (chosen >= 4) { r.className='result-box'; r.textContent = '多管齊下的介入策略，員工感受最明顯，建議分季導入。'; }
+  else if (chosen >= 2) { r.className='result-box'; r.textContent = '組合式介入能互補效果，執行前建議先評估員工需求。'; }
+  else { r.className='result-box warn'; r.textContent = '單一介入效果有限，可考慮搭配其他低成本措施。'; }
+}
+
+</script>
+</body>
+</html>
