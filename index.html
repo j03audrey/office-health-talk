@@ -109,25 +109,17 @@
     .timeline-icon { font-size:1.4em; }
     .timeline-text { font-size:.8em; }
 
-    /* ── flip card ── */
-    .flip-card { perspective:800px; cursor:pointer; }
-    .flip-card-inner {
-      position:relative; width:100%; padding-top:130%;
-      transform-style:preserve-3d; transition:transform .5s;
+    /* ── habit card (P15) ── */
+    .habit-card {
+      background:linear-gradient(160deg,var(--teal),var(--navy));
+      color:#fff; border-radius:18px; padding:20px 14px;
+      text-align:center; box-shadow:var(--card-shadow);
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      min-height:230px;
     }
-    .flip-card.flipped .flip-card-inner { transform:rotateY(180deg); }
-    .flip-front,.flip-back {
-      position:absolute; top:0; left:0; width:100%; height:100%;
-      backface-visibility:hidden; border-radius:18px;
-      display:flex; flex-direction:column;
-      align-items:center; justify-content:center;
-      padding:16px; text-align:center;
-    }
-    .flip-front { background:var(--teal); color:#fff; }
-    .flip-back  { background:var(--navy); color:#fff; transform:rotateY(180deg); }
-    .flip-front .flip-icon { font-size:2.2em; margin-bottom:.4em; }
-    .flip-front .flip-title { font-weight:700; font-size:.9em; }
-    .flip-back .flip-tip { font-size:.75em; line-height:1.7; }
+    .habit-icon { font-size:2.1em; margin-bottom:.4em; }
+    .habit-title { font-weight:700; font-size:.88em; margin-bottom:.5em; }
+    .habit-tip { font-size:.68em; line-height:1.6; color:rgba(255,255,255,.9); }
 
     /* ── quiz option ── */
     .quiz-options { display:flex; flex-direction:column; gap:12px; margin-top:16px; }
@@ -201,6 +193,14 @@
       from { opacity:0; transform:translateY(12px); }
       to   { opacity:1; transform:translateY(0); }
     }
+
+    /* ── global entrance animation ── */
+    @keyframes fadeInUpItem {
+      from { opacity:0; transform:translateY(18px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+    .anim-in { animation: fadeInUpItem .55s cubic-bezier(.2,.7,.3,1) both; }
+    .anim-head { animation: fadeInUpItem .5s ease both; }
     .cover-img-placeholder {
       width:100%; aspect-ratio:1; border-radius:24px;
       background:linear-gradient(135deg,var(--teal) 0%,var(--navy) 100%);
@@ -320,7 +320,7 @@
 
 <!-- ━━━━ P1 封面 ━━━━ -->
 <section data-background="var(--bg)">
-  <div class="cover-layout" style="height:100vh; padding:40px 60px;">
+  <div class="cover-layout" style="height:100%; padding:0;">
     <div>
       <div style="font-size:.7em; color:var(--teal); font-weight:700; letter-spacing:.1em; margin-bottom:.5em;">
         生生優活南京健康管理診所
@@ -846,62 +846,32 @@
 <!-- ━━━━ P15 五個專注力習慣（翻牌） ━━━━ -->
 <section>
   <h2><i class="fa fa-bolt teal"></i> 五個專注力習慣</h2>
-  <p class="subtitle">點擊卡片翻面，查看具體做法</p>
-  <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:14px; margin-top:16px;">
-    <div class="flip-card" onclick="flipCard(this)">
-      <div class="flip-card-inner">
-        <div class="flip-front">
-          <div class="flip-icon">🍳</div>
-          <div class="flip-title">早餐蛋白質</div>
-        </div>
-        <div class="flip-back">
-          <div class="flip-tip">早餐加入蛋、豆漿或起司，有助穩定上午血糖與專注力</div>
-        </div>
-      </div>
+  <p class="subtitle">五個低成本的日常習慣，依序展示</p>
+  <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:14px; margin-top:18px;" id="habitGrid">
+    <div class="habit-card">
+      <div class="habit-icon">🍳</div>
+      <div class="habit-title">早餐蛋白質</div>
+      <div class="habit-tip">早餐加入蛋、豆漿或起司，有助穩定上午血糖與專注力</div>
     </div>
-    <div class="flip-card" onclick="flipCard(this)">
-      <div class="flip-card-inner">
-        <div class="flip-front">
-          <div class="flip-icon">🥗</div>
-          <div class="flip-title">午餐不過油</div>
-        </div>
-        <div class="flip-back">
-          <div class="flip-tip">高油脂午餐會延長消化時間，加重下午嗜睡感</div>
-        </div>
-      </div>
+    <div class="habit-card">
+      <div class="habit-icon">🥗</div>
+      <div class="habit-title">午餐不過油</div>
+      <div class="habit-tip">高油脂午餐會延長消化時間，加重下午嗜睡感</div>
     </div>
-    <div class="flip-card" onclick="flipCard(this)">
-      <div class="flip-card-inner">
-        <div class="flip-front">
-          <div class="flip-icon">⏰</div>
-          <div class="flip-title">規律進食</div>
-        </div>
-        <div class="flip-back">
-          <div class="flip-tip">每 4–5 小時進食一次，穩定血糖有助於維持認知功能</div>
-        </div>
-      </div>
+    <div class="habit-card">
+      <div class="habit-icon">⏰</div>
+      <div class="habit-title">規律進食</div>
+      <div class="habit-tip">每 4–5 小時進食一次，穩定血糖有助於維持認知功能</div>
     </div>
-    <div class="flip-card" onclick="flipCard(this)">
-      <div class="flip-card-inner">
-        <div class="flip-front">
-          <div class="flip-icon">💧</div>
-          <div class="flip-title">規律補水</div>
-        </div>
-        <div class="flip-back">
-          <div class="flip-tip">每小時補水 200–250 ml，感到口渴時已輕微脫水</div>
-        </div>
-      </div>
+    <div class="habit-card">
+      <div class="habit-icon">💧</div>
+      <div class="habit-title">規律補水</div>
+      <div class="habit-tip">每小時補水 200–250 ml，感到口渴時已輕微脫水</div>
     </div>
-    <div class="flip-card" onclick="flipCard(this)">
-      <div class="flip-card-inner">
-        <div class="flip-front">
-          <div class="flip-icon">🚶</div>
-          <div class="flip-title">飯後走路</div>
-        </div>
-        <div class="flip-back">
-          <div class="flip-tip">飯後 10–15 分鐘散步，有助減緩血糖上升、提振下午精神</div>
-        </div>
-      </div>
+    <div class="habit-card">
+      <div class="habit-icon">🚶</div>
+      <div class="habit-title">飯後走路</div>
+      <div class="habit-tip">飯後 10–15 分鐘散步，有助減緩血糖上升、提振下午精神</div>
     </div>
   </div>
 </section>
@@ -1052,7 +1022,7 @@
 
 <!-- ━━━━ P20 宛徵營養師 ━━━━ -->
 <section>
-  <div class="profile-layout" style="height:90vh; padding:30px 0;">
+  <div class="profile-layout" style="height:100%; padding:0;">
     <div>
       <img class="profile-photo" src="images/profile.jpg" alt="沈宛徵營養師">
     </div>
@@ -1118,6 +1088,26 @@ Reveal.initialize({
   touch: true, width: 1280, height: 720,
   margin: 0.04
 });
+
+// ━━━━ 通用進場動畫：每次切換投影片，卡片依序淡入 ━━━━
+const ANIM_SELECTOR = '.card, .shield-card, .snack-card, .week-card, .timeline-item, ' +
+  '.factor-btn, .quiz-option, .habit-card, .step-item, .hr-option, .cost-item, ' +
+  '.checklist li, .reveal h2, .reveal h1';
+function playEntranceAnim(slide) {
+  const items = slide.querySelectorAll(ANIM_SELECTOR);
+  items.forEach(el => {
+    el.classList.remove('anim-in', 'anim-head');
+    el.style.animationDelay = '';
+  });
+  void slide.offsetWidth; // restart animation
+  items.forEach((el, i) => {
+    const isHeading = el.tagName === 'H1' || el.tagName === 'H2';
+    el.style.animationDelay = (isHeading ? 0 : 0.08 + i * 0.05) + 's';
+    el.classList.add(isHeading ? 'anim-head' : 'anim-in');
+  });
+}
+Reveal.on('ready', e => playEntranceAnim(e.currentSlide));
+Reveal.on('slidechanged', e => playEntranceAnim(e.currentSlide));
 
 // ━━━━ P2 症狀勾選 ━━━━
 function toggleSymptom(card) {
@@ -1365,8 +1355,6 @@ Reveal.on('slidechanged', e => {
   if (e.indexh === 13) { waterCount = 0; initWaterCups(); }
 });
 
-// ━━━━ P15 翻牌 ━━━━
-function flipCard(card) { card.classList.toggle('flipped'); }
 
 // ━━━━ P17 四週計畫 ━━━━
 function chooseWeek(card, week, task, icon) {
