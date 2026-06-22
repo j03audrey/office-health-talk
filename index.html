@@ -28,27 +28,27 @@
     .reveal { color: var(--text); }
     .reveal .slides section {
       height: 100%;
-      padding: 40px 60px;
+      padding: 28px 48px;
       text-align: left;
     }
-    .reveal h1 { color: var(--navy); font-weight: 900; font-size: 1.9em; line-height:1.25; margin-bottom:.3em; }
-    .reveal h2 { color: var(--navy); font-weight: 800; font-size: 1.4em; margin-bottom:.5em; }
-    .reveal h3 { color: var(--teal); font-weight: 700; font-size: 1.1em; }
-    .reveal p, .reveal li { font-size: .82em; }
+    .reveal h1 { color: var(--navy); font-weight: 900; font-size: 1.7em; line-height:1.2; margin-bottom:.25em; }
+    .reveal h2 { color: var(--navy); font-weight: 800; font-size: 1.2em; margin-bottom:.35em; }
+    .reveal h3 { color: var(--teal); font-weight: 700; font-size: 1em; }
+    .reveal p, .reveal li { font-size: .8em; }
     .accent  { color: var(--orange); }
     .teal    { color: var(--teal); }
     .green   { color: var(--green); }
-    .subtitle { font-size:.72em; color:#546E7A; margin-top:.2em; }
-    .disclaimer { font-size:.58em; color:#90A4AE; margin-top:1em; border-top:1px solid #CFD8DC; padding-top:.5em; }
+    .subtitle { font-size:.7em; color:#546E7A; margin-top:.1em; margin-bottom:0; }
+    .disclaimer { font-size:.55em; color:#90A4AE; margin-top:.6em; border-top:1px solid #CFD8DC; padding-top:.4em; }
 
     /* ── layout helpers ── */
-    .two-col { display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:start; }
-    .three-col { display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px; }
+    .two-col { display:grid; grid-template-columns:1fr 1fr; gap:16px; align-items:start; }
+    .three-col { display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; }
     .center-all { display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; text-align:center; }
 
     /* ── card ── */
     .card {
-      background:#fff; border-radius:18px; padding:20px 22px;
+      background:#fff; border-radius:14px; padding:14px 16px;
       box-shadow:var(--card-shadow); cursor:pointer;
       transition:transform .2s, background .2s, color .2s;
       user-select:none;
@@ -57,9 +57,9 @@
     .card.selected { background:var(--teal); color:#fff; }
     .card.wrong   { background:#FFCDD2; }
     .card.correct { background:#C8E6C9; }
-    .card-icon { font-size:1.8em; margin-bottom:.3em; }
-    .card-title { font-weight:700; font-size:.92em; }
-    .card-body  { font-size:.75em; margin-top:.3em; color:#546E7A; }
+    .card-icon { font-size:1.5em; margin-bottom:.2em; }
+    .card-title { font-weight:700; font-size:.88em; }
+    .card-body  { font-size:.72em; margin-top:.2em; color:#546E7A; }
     .card.selected .card-body { color:rgba(255,255,255,.85); }
 
     /* ── button ── */
@@ -77,9 +77,9 @@
 
     /* ── result box ── */
     .result-box {
-      margin-top:18px; padding:16px 20px; border-radius:14px;
-      background:#E8F5E9; font-size:.82em; min-height:44px;
-      border-left:4px solid var(--green); line-height:1.6;
+      margin-top:10px; padding:12px 16px; border-radius:12px;
+      background:#E8F5E9; font-size:.78em; min-height:38px;
+      border-left:4px solid var(--green); line-height:1.5;
       transition:all .3s;
     }
     .result-box.warn { background:#FFF3E0; border-color:var(--orange); }
@@ -96,37 +96,37 @@
     .tag-red { background:#FCE4EC; color:#B71C1C; }
 
     /* ── timeline ── */
-    .timeline { display:flex; flex-direction:column; gap:12px; }
+    .timeline { display:flex; flex-direction:column; gap:8px; }
     .timeline-item {
-      display:flex; align-items:center; gap:16px;
-      background:#fff; border-radius:12px; padding:12px 18px;
+      display:flex; align-items:center; gap:12px;
+      background:#fff; border-radius:10px; padding:9px 14px;
       box-shadow:0 2px 8px rgba(0,0,0,.06);
     }
     .timeline-time {
-      font-weight:700; color:var(--teal); font-size:.85em;
-      min-width:60px;
+      font-weight:700; color:var(--teal); font-size:.8em;
+      min-width:52px;
     }
-    .timeline-icon { font-size:1.4em; }
-    .timeline-text { font-size:.8em; }
+    .timeline-icon { font-size:1.2em; }
+    .timeline-text { font-size:.75em; }
 
     /* ── habit card (P15) ── */
     .habit-card {
       background:linear-gradient(160deg,var(--teal),var(--navy));
-      color:#fff; border-radius:18px; padding:20px 14px;
+      color:#fff; border-radius:14px; padding:16px 10px;
       text-align:center; box-shadow:var(--card-shadow);
       display:flex; flex-direction:column; align-items:center; justify-content:center;
-      min-height:230px;
+      min-height:170px;
     }
-    .habit-icon { font-size:2.1em; margin-bottom:.4em; }
-    .habit-title { font-weight:700; font-size:.88em; margin-bottom:.5em; }
-    .habit-tip { font-size:.68em; line-height:1.6; color:rgba(255,255,255,.9); }
+    .habit-icon { font-size:1.8em; margin-bottom:.3em; }
+    .habit-title { font-weight:700; font-size:.82em; margin-bottom:.3em; }
+    .habit-tip { font-size:.64em; line-height:1.5; color:rgba(255,255,255,.9); }
 
     /* ── quiz option ── */
-    .quiz-options { display:flex; flex-direction:column; gap:12px; margin-top:16px; }
+    .quiz-options { display:flex; flex-direction:column; gap:8px; margin-top:12px; }
     .quiz-option {
-      background:#fff; border-radius:12px; padding:14px 20px;
+      background:#fff; border-radius:10px; padding:10px 16px;
       box-shadow:0 2px 8px rgba(0,0,0,.08); cursor:pointer;
-      font-size:.82em; font-weight:500; transition:.2s;
+      font-size:.8em; font-weight:500; transition:.2s;
       border:2px solid transparent;
     }
     .quiz-option:hover { border-color:var(--teal); }
@@ -137,11 +137,11 @@
     .chart-wrap { background:#fff; border-radius:18px; padding:20px; box-shadow:var(--card-shadow); }
 
     /* ── shield grid (P6) ── */
-    .shield-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .shield-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
     .shield-card {
-      background:#fff; border-radius:18px; padding:22px;
+      background:#fff; border-radius:14px; padding:16px;
       box-shadow:var(--card-shadow); cursor:pointer; transition:.2s;
-      border-top:5px solid var(--teal);
+      border-top:4px solid var(--teal);
     }
     .shield-card:nth-child(2) { border-top-color:var(--green); }
     .shield-card:nth-child(3) { border-top-color:var(--orange); }
@@ -224,14 +224,14 @@
     .checklist li.checked .cb { background:var(--green); border-color:var(--green); color:#fff; }
 
     /* ── snack drawer ── */
-    .snack-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+    .snack-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
     .snack-card {
-      background:#fff; border-radius:16px; padding:16px;
+      background:#fff; border-radius:12px; padding:12px;
       box-shadow:var(--card-shadow); cursor:pointer; transition:.2s; text-align:center;
     }
     .snack-card:hover { transform:translateY(-3px); }
-    .snack-card .snack-icon { font-size:2.2em; margin-bottom:.3em; }
-    .snack-card .snack-name { font-weight:700; font-size:.8em; }
+    .snack-card .snack-icon { font-size:1.8em; margin-bottom:.2em; }
+    .snack-card .snack-name { font-weight:700; font-size:.76em; }
     .snack-detail {
       display:none; font-size:.72em; color:#546E7A; margin-top:.5em;
       text-align:left; line-height:1.6;
@@ -239,9 +239,9 @@
     .snack-card.open .snack-detail { display:block; }
 
     /* ── week task ── */
-    .week-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+    .week-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
     .week-card {
-      background:#fff; border-radius:16px; padding:18px 14px;
+      background:#fff; border-radius:12px; padding:14px 10px;
       box-shadow:var(--card-shadow); cursor:pointer; transition:.2s; text-align:center;
       border:3px solid transparent;
     }
@@ -252,11 +252,11 @@
     .week-label { font-size:.78em; font-weight:700; }
 
     /* ── HR simulator ── */
-    .hr-options { display:flex; flex-direction:column; gap:10px; margin-bottom:20px; }
+    .hr-options { display:flex; flex-direction:column; gap:7px; margin-bottom:14px; }
     .hr-option {
-      display:flex; align-items:center; gap:14px;
-      background:#fff; padding:12px 18px; border-radius:12px;
-      box-shadow:0 2px 8px rgba(0,0,0,.06); cursor:pointer; font-size:.8em;
+      display:flex; align-items:center; gap:10px;
+      background:#fff; padding:9px 14px; border-radius:10px;
+      box-shadow:0 2px 8px rgba(0,0,0,.06); cursor:pointer; font-size:.78em;
       border:2px solid transparent; transition:.2s;
     }
     .hr-option input[type=checkbox] { accent-color:var(--teal); width:18px; height:18px; }
@@ -268,7 +268,7 @@
     .meter-bar { height:100%; border-radius:99px; transition:width .5s; }
 
     /* ── p4 circle buttons ── */
-    .factor-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+    .factor-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
     .factor-btn {
       background:#fff; border-radius:50%; aspect-ratio:1;
       display:flex; flex-direction:column; align-items:center; justify-content:center;
@@ -296,11 +296,11 @@
     }
 
     /* ── step banner ── */
-    .steps { display:flex; gap:10px; margin-top:20px; }
+    .steps { display:flex; gap:8px; margin-top:14px; }
     .step-item {
-      flex:1; background:#fff; border-radius:14px; padding:16px 12px;
+      flex:1; background:#fff; border-radius:12px; padding:12px 10px;
       box-shadow:var(--card-shadow); text-align:center;
-      opacity:.3; transition:.4s; font-size:.78em;
+      opacity:.3; transition:.4s; font-size:.75em;
     }
     .step-item.show { opacity:1; }
     .step-num { font-size:1.4em; font-weight:900; color:var(--orange); }
@@ -352,7 +352,7 @@
 <section>
   <h2><i class="fa fa-magnifying-glass accent"></i> 職場犯罪現場</h2>
   <p class="subtitle">你最近一週中了幾項？點選符合的項目</p>
-  <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:16px;" id="symptomGrid">
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:12px;" id="symptomGrid">
     <div class="card" onclick="toggleSymptom(this)">
       <div class="card-icon">😴</div>
       <div class="card-title">下午容易想睡</div>
@@ -745,7 +745,7 @@
 <section>
   <h2><i class="fa fa-chart-pie teal"></i> 你屬於哪種類型？</h2>
   <p class="subtitle">壓力飲食的四種型態</p>
-  <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:16px;">
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:12px;">
     <div class="card fragment" style="cursor:default; border-left:5px solid var(--green);">
       <div style="font-size:1.6em;">🍽️</div>
       <div style="font-weight:700; margin:.3em 0;">生理性飢餓</div>
@@ -847,7 +847,7 @@
 <section>
   <h2><i class="fa fa-bolt teal"></i> 五個專注力習慣</h2>
   <p class="subtitle">五個低成本的日常習慣，依序展示</p>
-  <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:14px; margin-top:18px;" id="habitGrid">
+  <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:10px; margin-top:12px;" id="habitGrid">
     <div class="habit-card">
       <div class="habit-icon">🍳</div>
       <div class="habit-title">早餐蛋白質</div>
