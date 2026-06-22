@@ -507,52 +507,29 @@
 <section>
   <h2><i class="fa fa-shield-halved green"></i> 四大系統解方</h2>
   <p class="subtitle">點擊各盾牌，查看最低成本版本的行動方案</p>
-  <div class="shield-grid" style="margin-top:20px;">
-    <div class="shield-card" onclick="toggleShield(this)">
+  <div class="shield-grid" style="margin-top:14px;">
+    <div class="shield-card" onclick="showShield(this,'eat','🍽️ 吃對｜飲食選擇策略','飲料先改無糖／點餐時加一份青菜／把精製澱粉換成地瓜或糙米')">
       <div class="icon">🍽️</div>
       <h3>吃對</h3>
-      <p style="font-size:.75em; color:#546E7A; margin:.2em 0;">飲食選擇策略</p>
-      <div class="shield-detail">
-        <strong>最低成本版：</strong><br>
-        飲料先改無糖<br>
-        點餐時加一份青菜<br>
-        把精製澱粉換成地瓜或糙米
-      </div>
+      <p style="font-size:.72em; color:#546E7A; margin:.2em 0;">飲食選擇策略</p>
     </div>
-    <div class="shield-card" onclick="toggleShield(this)">
+    <div class="shield-card" onclick="showShield(this,'move','🏃 動一點｜日常活動累積','飯後走路 10 分鐘／會議改走路會議／久坐每小時起身一次')">
       <div class="icon">🏃</div>
       <h3>動一點</h3>
-      <p style="font-size:.75em; color:#546E7A; margin:.2em 0;">日常活動累積</p>
-      <div class="shield-detail">
-        <strong>最低成本版：</strong><br>
-        飯後走路 10 分鐘<br>
-        會議改走路會議<br>
-        久坐每小時起身一次
-      </div>
+      <p style="font-size:.72em; color:#546E7A; margin:.2em 0;">日常活動累積</p>
     </div>
-    <div class="shield-card" onclick="toggleShield(this)">
+    <div class="shield-card" onclick="showShield(this,'sleep','🌙 睡夠｜睡眠品質管理','下午三點後減少咖啡因／睡前 30 分鐘減少螢幕／固定起床時間')">
       <div class="icon">🌙</div>
       <h3>睡夠</h3>
-      <p style="font-size:.75em; color:#546E7A; margin:.2em 0;">睡眠品質管理</p>
-      <div class="shield-detail">
-        <strong>最低成本版：</strong><br>
-        下午三點後減少咖啡因<br>
-        睡前 30 分鐘減少螢幕<br>
-        固定起床時間
-      </div>
+      <p style="font-size:.72em; color:#546E7A; margin:.2em 0;">睡眠品質管理</p>
     </div>
-    <div class="shield-card" onclick="toggleShield(this)">
+    <div class="shield-card" onclick="showShield(this,'stress','🧘 降壓｜壓力辨識與調節','先辨認是真餓還是心情差／感到壓力時先喝一杯水／設定工作不看手機的 30 分鐘')">
       <div class="icon">🧘</div>
       <h3>降壓</h3>
-      <p style="font-size:.75em; color:#546E7A; margin:.2em 0;">壓力辨識與調節</p>
-      <div class="shield-detail">
-        <strong>最低成本版：</strong><br>
-        先辨認是真餓還是心情差<br>
-        感到壓力時先喝一杯水<br>
-        設定工作不看手機的 30 分鐘
-      </div>
+      <p style="font-size:.72em; color:#546E7A; margin:.2em 0;">壓力辨識與調節</p>
     </div>
   </div>
+  <div id="shieldDetail" class="result-box" style="margin-top:12px; display:none;"></div>
 </section>
 
 <!-- ━━━━ P7 外食地雷 vs 升級 ━━━━ -->
@@ -1165,8 +1142,12 @@ function showCost(el, type, name, detail) {
 }
 
 // ━━━━ P6 盾牌 ━━━━
-function toggleShield(card) {
-  card.classList.toggle('open');
+function showShield(card, key, title, detail) {
+  document.querySelectorAll('.shield-card').forEach(c => c.classList.remove('open'));
+  card.classList.add('open');
+  const box = document.getElementById('shieldDetail');
+  box.style.display = 'block';
+  box.innerHTML = `<strong>${title}</strong><br><span style="color:#546E7A;">最低成本版：${detail}</span>`;
 }
 
 // ━━━━ P7 外食選擇 ━━━━
